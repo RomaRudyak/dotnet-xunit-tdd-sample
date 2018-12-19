@@ -98,6 +98,24 @@ namespace TDD
 
         #endregion Requirement 4: Allow the Add method to handle an unknown amount of numbers
 
+        #region Requirement 5: Allow the Add method to handle new lines between numbers 
+
+        [Fact]
+        public void Add_WhenNewLineIsUsedBetweenNumbersThenReturnValuesAreTheirSums()
+        {
+            // Arrange
+            const Int32 expectedResult = 3 + 6 + 5;
+            var calc = new StringCalculator();
+
+            // Act
+            var result = calc.Add("3,6\n5");
+
+            // Assert
+            Assert.Equal(expectedResult, result);
+        }
+
+        #endregion Requirement 5: Allow the Add method to handle new lines between numbers 
+
     }
 }
 #pragma warning restore CS1701 // Assuming assembly reference matches identity
