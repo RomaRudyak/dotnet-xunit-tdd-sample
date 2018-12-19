@@ -7,22 +7,15 @@ namespace TDD
         {
             var result = 0;
             String[] numbersArray = numbers.Split(',', StringSplitOptions.RemoveEmptyEntries);
-            if (numbersArray.Length > 2)
+            foreach (String number in numbersArray)
             {
-                throw new InvalidOperationException("Up to 2 numbers separated by comma (,) are allowed");
-            }
-            else
-            {
-                foreach (String number in numbersArray)
+                if (String.IsNullOrEmpty(number))
                 {
-                    if (String.IsNullOrEmpty(number))
-                    {
-                        result += 0;
-                        continue;
-                    }
-                    // If it is not a number, parseInt will throw an exception
-                    result += Int32.Parse(number);
+                    result += 0;
+                    continue;
                 }
+                // If it is not a number, parseInt will throw an exception
+                result += Int32.Parse(number);
             }
 
             return result;
