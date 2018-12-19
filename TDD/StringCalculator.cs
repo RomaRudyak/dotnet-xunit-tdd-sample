@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 namespace TDD
 {
     public class StringCalculator
@@ -20,6 +21,7 @@ namespace TDD
         {
             var result = 0;
             String[] numbersArray = numbers.Split(delimeters, StringSplitOptions.RemoveEmptyEntries);
+            var negativeNumbers = new List<Int32>(numbers.Length);
             foreach (String number in numbersArray)
             {
                 if (String.IsNullOrEmpty(number))
@@ -28,7 +30,17 @@ namespace TDD
                     continue;
                 }
                 // If it is not a number, parseInt will throw an exception
-                result += Int32.Parse(number);
+                var val = Int32.Parse(number);
+                if (val < 0)
+                {
+                    negativeNumbers.Add(val);
+                }
+                result += val;
+            }
+
+            if (negativeNumbers.Count > 0)
+            {
+                throw new InvalidOperationException($"Negatives not allowed: [{String.Join(", ", negativeNumbers)}]");
             }
 
             return result;
