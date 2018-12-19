@@ -6,7 +6,7 @@ namespace TDD
         public Int32 Add(String numbers)
         {
             var result = 0;
-            String[] numbersArray = numbers.Split(',', StringSplitOptions.RemoveEmptyEntries);
+            String[] numbersArray = numbers.Split(new[] { ",", "\n" }, StringSplitOptions.RemoveEmptyEntries);
             foreach (String number in numbersArray)
             {
                 if (String.IsNullOrEmpty(number))
