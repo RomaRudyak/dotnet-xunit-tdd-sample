@@ -134,6 +134,38 @@ namespace TDD
 
         #endregion Requirement 6: Support different delimiters
 
+        #region Requirement 7: Negative numbers will throw an exception
+
+        [Fact]
+        public void Add_WhenNegativeNumberIsUsedThenRuntimeExceptionIsThrown()
+        {
+            // Arrange
+            var calc = new StringCalculator();
+
+            // Act
+            Action act = () => calc.Add("33,-65,13,58,7");
+
+            // Assert
+            Assert.Throws<InvalidOperationException>(act);
+        }
+
+        [Fact]
+        public void Add_WhenNegativeNumbersAreUsedThenRuntimeExceptionIsThrown()
+        {
+            // Arrange
+            var calc = new StringCalculator();
+
+            // Act
+            Action act = () => calc.Add("33,-65,13,-58,7");
+
+            // Assert
+            var ex = Assert.Throws<InvalidOperationException>(act);
+            Assert.Equal("Negatives not allowed: [-65, -58]", ex.Message);
+        }
+
+
+        #endregion Requirement 7: Negative numbers will throw an exception
+
     }
 }
 #pragma warning restore CS1701 // Assuming assembly reference matches identity
