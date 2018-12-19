@@ -116,6 +116,24 @@ namespace TDD
 
         #endregion Requirement 5: Allow the Add method to handle new lines between numbers 
 
+        #region Requirement 6: Support different delimiters
+
+        [Fact]
+        public void Add_WhenDelimiterIsSpecifiedThenItIsUsedToSeparateNumbers()
+        {
+            // Arrange
+            const Int32 expectedResult = 3 + 6 + 5;
+            var calc = new StringCalculator();
+
+            // Act
+            var result = calc.Add("//;\n3;6;5");
+
+            // Assert
+            Assert.Equal(expectedResult, result);
+        }
+
+        #endregion Requirement 6: Support different delimiters
+
     }
 }
 #pragma warning restore CS1701 // Assuming assembly reference matches identity
