@@ -61,6 +61,37 @@ namespace TDD
         }
         #endregion Requirement 2: For an empty string the method will return 0
 
+        #region Requirement 3: Method will return their sum of numbers
+        [Fact]
+        public void Add_WhenOneNumberIsUsedThenReturnValueIsThatSameNumber()
+        {
+            // Arrange
+            const Int32 expectedResult = 3;
+            var calc = new StringCalculator();
+
+            // Act
+            var result = calc.Add("3");
+
+            // Assert
+            Assert.Equal(expectedResult, result);
+        }
+
+        [Fact]
+        public void Add_WhenTwoNumbersAreUsedThenReturnValueIsTheirSum()
+        {
+            // Arrange
+            const Int32 expectedResult = 3 + 6;
+            var calc = new StringCalculator();
+
+            // Act
+            var result = calc.Add("3,6");
+
+            // Assert
+            Assert.Equal(expectedResult, result);
+        }
+
+        #endregion Requirement 3: Method will return their sum of numbers
+
     }
 }
 #pragma warning restore CS1701 // Assuming assembly reference matches identity
