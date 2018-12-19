@@ -8,18 +8,6 @@ namespace TDD
     {
 
         #region Requirement 1: The method can take 0, 1 or 2 numbers separated by comma (,)
-        [Fact]
-        public void Add_WhenMoreThan2NumbersAreUsedThenExceptionIsThrown()
-        {
-            // Arrange
-            var calc = new StringCalculator();
-
-            // Act
-            Action act = () => calc.Add("1,2,3");
-
-            // Assert
-            Assert.Throws<InvalidOperationException>(act);
-        }
 
         [Fact]
         public void Add_When2NumbersAreUsedThenNoExceptionIsThrown()
@@ -91,6 +79,24 @@ namespace TDD
         }
 
         #endregion Requirement 3: Method will return their sum of numbers
+
+        #region Requirement 4: Allow the Add method to handle an unknown amount of numbers
+
+        [Fact]
+        public void Add_WhenAnyNumberOfNumbersIsUsedThenReturnValuesAreTheirSums()
+        {
+            // Arrange
+            const Int32 expectedResult = 33 + 65 + 13 + 58 + 7;
+            var calc = new StringCalculator();
+
+            // Act
+            var result = calc.Add("33,65,13,58,7");
+
+            // Assert
+            Assert.Equal(expectedResult, result);
+        }
+
+        #endregion Requirement 4: Allow the Add method to handle an unknown amount of numbers
 
     }
 }
